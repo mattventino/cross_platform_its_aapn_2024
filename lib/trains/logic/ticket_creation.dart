@@ -1,5 +1,5 @@
-import 'package:cross_platform_its_aapn_2024/models/station.dart';
-import 'package:cross_platform_its_aapn_2024/models/ticket.dart';
+import 'package:cross_platform_its_aapn_2024/trains/models/station.dart';
+import 'package:cross_platform_its_aapn_2024/trains/models/ticket.dart';
 
 void ticketCreation() {
   final udine = Station(

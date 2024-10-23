@@ -1,4 +1,4 @@
-import 'package:cross_platform_its_aapn_2024/models/station.dart';
+import 'package:cross_platform_its_aapn_2024/trains/models/station.dart';
 
 class Ticket {
   Ticket({
