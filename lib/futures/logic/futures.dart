@@ -1,5 +1,6 @@
 import 'dart:io' as io;
 
+import 'package:cross_platform_its_aapn_2024/extensions/model/better_fruit.dart';
 import 'package:cross_platform_its_aapn_2024/futures/errors/wrong_fruit_exception.dart';
 
 Future<int> cashOut(String fileName) async {
@@ -25,10 +26,9 @@ Future<int> cashOut(String fileName) async {
   // return sum;
 
   // lazy version
-  final bytes = file.openRead();
+  final lines = file.readLinesLazy();
   var sum = 0;
-  await for (final lineBytes in bytes) {
-    final line = String.fromCharCodes(lineBytes);
+  await for (final line in lines) {
     final splitted = line.split(' ');
     print(splitted); // TODO(lucavenir): fix this bug
     final last = splitted.lastOrNull;
