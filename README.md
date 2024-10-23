@@ -1,1 +1,2 @@
-# cross_platform_its_aapn_2024
+A sample command-line application with an entrypoint in `bin/`, library code
+in `lib/`, and example unit test in `test/`.
