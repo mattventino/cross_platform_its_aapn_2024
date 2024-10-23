@@ -1,0 +1,5 @@
+banana 5
+meloni 4
+fragole 9
+mirtillo 3
+lamponi 11
