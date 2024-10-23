@@ -30,7 +30,6 @@ Future<int> cashOut(String fileName) async {
   var sum = 0;
   await for (final line in lines) {
     final splitted = line.split(' ');
-    print(splitted); // TODO(lucavenir): fix this bug
     final last = splitted.lastOrNull;
     if (last == null) throw WrongFruitException();
     final money = int.tryParse(last);

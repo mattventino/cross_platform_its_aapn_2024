@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cross_platform_its_aapn_2024/fruit/models/fruit.dart';
@@ -13,6 +14,8 @@ extension BombsOnFruitExtension on Fruit {
 
 extension FlutterExtension on File {
   Stream<String> readLinesLazy() {
-    return openRead().map((byte) => String.fromCharCodes(byte));
+    return openRead() //
+        .transform(Utf8Decoder())
+        .transform(LineSplitter());
   }
 }
