@@ -1,4 +1,4 @@
-import 'package:cross_platform_its_aapn_2024/futures/logic/futures.dart';
+import 'package:cross_platform_its_aapn_2024/static_metaprogramming/logic/print_fruits.dart';
 
 void main() {
   // ticketCreation();
@@ -6,5 +6,6 @@ void main() {
   // fruitShop();
   // libraryPass();
   // handleTrains();
-  cashOut("fruits.txt");
+  // cashOut("fruits.txt");
+  printFruits();
 }
