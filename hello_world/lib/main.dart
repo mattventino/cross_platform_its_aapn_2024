@@ -32,9 +32,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+  void _increment() {
     setState(() {
       _counter++;
+    });
+  }
+
+  void _decrement() {
+    setState(() {
+      _counter--;
     });
   }
 
@@ -46,16 +52,13 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
+        child: ListView(
           children: <Widget>[
-            const Text("Ciao! Il mio nome è Luca Venir"),
-            const Center(
-              child: SizedBox.square(
-                dimension: 120,
-                child: CircularProgressIndicator(),
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: 16,
               ),
+              child: Text("Ciao! Il mio nome è Luca Venir"),
             ),
             const Text(
               'You have pushed the button this many times:',
@@ -64,13 +67,30 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 16,
+              ),
+              child: SizedBox(
+                height: 200,
+                width: 400,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _increment,
+                      child: const Icon(Icons.add),
+                    ),
+                    ElevatedButton(
+                      onPressed: _decrement,
+                      child: const Icon(Icons.remove),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.sports_rugby),
       ),
     );
   }
