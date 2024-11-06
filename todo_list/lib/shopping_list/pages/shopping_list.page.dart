@@ -32,7 +32,18 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
         itemCount: list.length,
         itemBuilder: (context, index) {
           final element = list[index];
-          return Text(element);
+          // return Text(element);
+          return ListTile(
+            leading: Checkbox(
+              value: false,
+              onChanged: (value) {},
+            ),
+            title: Text(element),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
+            ),
+          );
         },
       ),
     );
