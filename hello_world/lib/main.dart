@@ -51,6 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             const Text("Ciao! Il mio nome è Luca Venir"),
+            const Center(
+              child: SizedBox.square(
+                dimension: 120,
+                child: CircularProgressIndicator(),
+              ),
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -64,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.sports_rugby),
       ),
     );
   }
