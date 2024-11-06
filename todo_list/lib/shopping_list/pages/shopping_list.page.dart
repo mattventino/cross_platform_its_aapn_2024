@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/shopping_list/models/item.model.dart';
 
 class ShoppingListPage extends StatefulWidget {
   const ShoppingListPage({super.key});
@@ -8,13 +9,31 @@ class ShoppingListPage extends StatefulWidget {
 }
 
 class _ShoppingListPageState extends State<ShoppingListPage> {
-  final list = <String>[
-    "banane x3",
-    "mele x5",
-    "petto di pollo",
-    "1.5kg di pasta",
-    "500g di lenticchie",
-    "due confezioni di tonno"
+  final list = [
+    Item(
+      title: "banane x3",
+      isChecked: false,
+    ),
+    Item(
+      title: "mele x5",
+      isChecked: false,
+    ),
+    Item(
+      title: "petto di pollo",
+      isChecked: false,
+    ),
+    Item(
+      title: "1.5kg di pasta",
+      isChecked: false,
+    ),
+    Item(
+      title: "500g di lenticchie",
+      isChecked: false,
+    ),
+    Item(
+      title: "due confezioni di tonno",
+      isChecked: false,
+    ),
   ];
 
   @override
@@ -32,15 +51,24 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
         itemCount: list.length,
         itemBuilder: (context, index) {
           final element = list[index];
-          // return Text(element);
           return ListTile(
             leading: Checkbox(
-              value: false,
-              onChanged: (value) {},
+              value: element.isChecked,
+              tristate: false,
+              onChanged: (value) {
+                if (value == null) return;
+                setState(() {
+                  list[index].isChecked = value;
+                });
+              },
             ),
-            title: Text(element),
+            title: Text(element.title),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  list.removeAt(index);
+                });
+              },
               icon: const Icon(Icons.delete),
             ),
           );
