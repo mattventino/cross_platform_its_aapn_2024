@@ -1,4 +1,5 @@
 import 'package:classroom_reservation/src/rooms/pages/edit_room.page.dart';
+import 'package:classroom_reservation/src/rooms/pages/room.page.dart';
 import 'package:classroom_reservation/src/rooms/pages/rooms.page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,7 +18,10 @@ final router = GoRouter(
     GoRoute(
       path: '/:id',
       name: 'room-details',
-      builder: (context, state) => throw UnimplementedError(),
+      builder: (context, state) {
+        final id = state.pathParameters['id']!;
+        return RoomPage(id: id);
+      },
     )
   ],
 );
