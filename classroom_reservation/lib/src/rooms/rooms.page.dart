@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:classroom_reservation/src/rooms/room.dart';
 import 'package:flutter/material.dart';
 
@@ -22,8 +24,8 @@ class _RoomsPageState extends State<RoomsPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          const newRoom = Room(
-            id: 99,
+          final newRoom = Room(
+            id: Random().nextInt(0xFFFFF),
             isOccupied: false,
             capacity: 100,
             name: "B6",
@@ -39,7 +41,27 @@ class _RoomsPageState extends State<RoomsPage> {
       body: ListView(
         children: [
           for (final room in roomList) //
-            Text("$room"), // TODO: implement this with ListTile
+            ListTile(
+              leading: IconButton(
+                onPressed: () {
+                  setState(() {
+                    roomList = [
+                      ...roomList.map(
+                        (element) => element == room
+                            ? element.copyWith(
+                                isOccupied: !element.isOccupied,
+                              )
+                            : element,
+                      )
+                    ];
+                  });
+                },
+                icon: room.isOccupied
+                    ? const Icon(Icons.airplane_ticket)
+                    : const Icon(Icons.agriculture),
+              ),
+              title: Text("${room.name} - ${room.building}"),
+            )
         ],
       ),
     );
