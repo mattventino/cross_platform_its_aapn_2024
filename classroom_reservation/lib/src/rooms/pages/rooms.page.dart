@@ -1,6 +1,6 @@
 import 'package:classroom_reservation/src/rooms/models/room.dart';
-import 'package:classroom_reservation/src/rooms/pages/edit_room.page.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class RoomsPage extends StatefulWidget {
   const RoomsPage({super.key});
@@ -22,19 +22,13 @@ class _RoomsPageState extends State<RoomsPage> {
         child: Text("drawer di prova, arrivederci"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => EditRoomPage(
-                onSubmit: (result) {
-                  setState(() {
-                    roomList.insert(0, result);
-                  });
-                  Navigator.of(context).pop();
-                },
-              ),
-            ),
-          );
+        onPressed: () async {
+          final result = await context.pushNamed<Room>('new-room');
+          if (result == null) return;
+
+          setState(() {
+            roomList.insert(0, result);
+          });
         },
         child: const Icon(Icons.add),
       ),

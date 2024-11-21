@@ -1,4 +1,4 @@
-import 'package:classroom_reservation/src/rooms/pages/rooms.page.dart';
+import 'package:classroom_reservation/src/router.dart';
 import 'package:flutter/material.dart';
 
 class ClassroomReservation extends StatelessWidget {
@@ -6,8 +6,8 @@ class ClassroomReservation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: RoomsPage(),
+    return MaterialApp.router(
+      routerConfig: router,
     );
   }
 }

@@ -2,14 +2,13 @@ import 'dart:math';
 
 import 'package:classroom_reservation/src/rooms/models/room.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class EditRoomPage extends StatefulWidget {
   const EditRoomPage({
-    required this.onSubmit,
     super.key,
   });
-  final ValueChanged<Room> onSubmit;
 
   @override
   State<EditRoomPage> createState() => _EditRoomPageState();
@@ -94,7 +93,7 @@ class _EditRoomPageState extends State<EditRoomPage> {
                       capacity: capacity,
                       isOccupied: false,
                     );
-                    widget.onSubmit(result);
+                    context.pop(result);
                   },
                   label: const Text("Salva"),
                   icon: const Icon(Icons.save),
