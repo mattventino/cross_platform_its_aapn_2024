@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:classroom_reservation/src/rooms/models/room.dart';
+import 'package:classroom_reservation/src/rooms/pages/edit_room.page.dart';
 import 'package:flutter/material.dart';
 
 class RoomsPage extends StatefulWidget {
@@ -24,17 +23,18 @@ class _RoomsPageState extends State<RoomsPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          final newRoom = Room(
-            id: Random().nextInt(0xFFFFF),
-            isOccupied: false,
-            capacity: 100,
-            name: "B6",
-            building: "B",
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => EditRoomPage(
+                onSubmit: (result) {
+                  setState(() {
+                    roomList.insert(0, result);
+                  });
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
           );
-
-          setState(() {
-            roomList.insert(0, newRoom);
-          });
         },
         child: const Icon(Icons.add),
       ),
