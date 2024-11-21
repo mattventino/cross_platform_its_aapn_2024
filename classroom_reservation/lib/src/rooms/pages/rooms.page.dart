@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:classroom_reservation/src/rooms/room.dart';
+import 'package:classroom_reservation/src/rooms/models/room.dart';
 import 'package:flutter/material.dart';
 
 class RoomsPage extends StatefulWidget {

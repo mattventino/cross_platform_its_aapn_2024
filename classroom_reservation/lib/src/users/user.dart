@@ -1,4 +1,4 @@
-import 'package:classroom_reservation/src/auth_z.dart';
+import 'package:classroom_reservation/src/users/auth_z.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
