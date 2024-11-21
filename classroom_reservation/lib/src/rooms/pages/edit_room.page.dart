@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:classroom_reservation/src/rooms/models/room.dart';
 import 'package:flutter/material.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 class EditRoomPage extends StatefulWidget {
   const EditRoomPage({
@@ -15,17 +16,31 @@ class EditRoomPage extends StatefulWidget {
 }
 
 class _EditRoomPageState extends State<EditRoomPage> {
-  String? inputName;
-  String? inputBuilding;
-  int? inputCapacity;
+  final form = FormGroup({
+    'name': FormControl<String>(
+      validators: [
+        Validators.required,
+        Validators.minLength(2),
+      ],
+    ),
+    'building': FormControl<String>(
+      validators: [
+        Validators.required,
+        Validators.minLength(5),
+      ],
+    ),
+    'capacity': FormControl<int>(
+      validators: [
+        Validators.required,
+        Validators.number(allowNegatives: false),
+        Validators.min(20)
+      ],
+    ),
+  });
 
-  late final GlobalKey<FormState> formKey;
-
-  @override
-  void initState() {
-    super.initState();
-    formKey = GlobalKey<FormState>();
-  }
+  String get name => form.control('name').value;
+  String get building => form.control('building').value;
+  int get capacity => form.control('capacity').value;
 
   @override
   Widget build(BuildContext context) {
@@ -35,57 +50,55 @@ class _EditRoomPageState extends State<EditRoomPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 96),
-        child: Form(
-          key: formKey,
+        child: ReactiveForm(
+          formGroup: form,
           child: ListView(
             children: [
-              TextFormField(
-                validator: (value) {
-                  if (value == null) return "Il nome è obbligatorio!";
-                  if (value.isEmpty) return "Il nome è obbligatorio!";
-                  if (value.length < 2) return "Il nome è troppo corto!";
-                  inputName = value; // a questo punto `value` è valido!
-                  return null;
+              ReactiveTextField(
+                formControlName: 'name',
+                validationMessages: {
+                  ValidationMessage.required: (error) => 'Obbligatorio.',
+                  ValidationMessage.minLength: (error) => "Troppo corto."
                 },
               ),
-              TextFormField(
-                validator: (value) {
-                  if (value == null) return "L'edificio è obbligatorio!";
-                  if (value.isEmpty) return "L'edificio è obbligatorio!";
-                  if (value.length < 5) return "L'edificio è troppo corto!";
-                  inputBuilding = value;
-                  return null;
+              const SizedBox(height: 12),
+              ReactiveTextField(
+                formControlName: 'building',
+                validationMessages: {
+                  ValidationMessage.required: (error) => 'Obbligatorio.',
+                  ValidationMessage.minLength: (error) => "Troppo corto."
                 },
               ),
-              TextFormField(
+              const SizedBox(height: 12),
+              ReactiveTextField(
                 keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null) return "La capacità è obbligatoria!";
-                  final parsed = int.tryParse(value);
-                  if (parsed == null) return "La capacità non è valida..";
-                  if (parsed < 20) return "La stanza è troppo piccola!";
-                  inputCapacity = parsed;
-                  return null;
+                formControlName: 'capacity',
+                validationMessages: {
+                  ValidationMessage.required: (error) => 'Obbligatorio.',
+                  ValidationMessage.number: (error) =>
+                      "Dev'essere un numero positivo",
+                  ValidationMessage.min: (error) =>
+                      "Deve avere almeno 20 posti."
                 },
               ),
-              ElevatedButton.icon(
-                onPressed: () {
-                  final state = formKey.currentState!;
-                  final isValid = state.validate();
-                  if (!isValid) return;
-                  state.save();
+              const SizedBox(height: 72),
+              Center(
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    if (form.invalid) return form.markAllAsTouched();
 
-                  final result = Room(
-                    id: Random().nextInt(0x99999),
-                    capacity: inputCapacity!,
-                    name: inputName!,
-                    building: inputBuilding!,
-                    isOccupied: false,
-                  );
-                  widget.onSubmit(result);
-                },
-                label: const Text("Salva"),
-                icon: const Icon(Icons.save),
+                    final result = Room(
+                      id: Random().nextInt(0x99999),
+                      name: name,
+                      building: building,
+                      capacity: capacity,
+                      isOccupied: false,
+                    );
+                    widget.onSubmit(result);
+                  },
+                  label: const Text("Salva"),
+                  icon: const Icon(Icons.save),
+                ),
               )
             ],
           ),
