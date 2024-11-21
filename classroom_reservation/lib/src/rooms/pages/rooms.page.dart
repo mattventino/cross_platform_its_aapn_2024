@@ -36,6 +36,12 @@ class _RoomsPageState extends State<RoomsPage> {
         children: [
           for (final room in roomList) //
             ListTile(
+              onTap: () {
+                context.pushNamed(
+                  'room-details',
+                  pathParameters: {'id': '${room.id}'},
+                );
+              },
               leading: IconButton(
                 onPressed: () {
                   setState(() {

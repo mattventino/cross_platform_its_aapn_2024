@@ -13,6 +13,11 @@ final router = GoRouter(
       path: "/new",
       name: "new-room",
       builder: (context, state) => const EditRoomPage(),
+    ),
+    GoRoute(
+      path: '/:id',
+      name: 'room-details',
+      builder: (context, state) => throw UnimplementedError(),
     )
   ],
 );
