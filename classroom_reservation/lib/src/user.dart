@@ -1,11 +1,19 @@
+import 'package:classroom_reservation/src/auth_z.dart';
+
 class User {
-  User({
+  const User({
     required this.id,
     required this.name,
     required this.email,
+    required this.authorization,
   });
-  int id;
-  String name;
-  String email;
-  // AuthZ authorization;
+  final int id;
+  final String name;
+  final String email;
+  final AuthZ authorization;
+
+  @override
+  String toString() {
+    return "User[id: $id, name: $name]";
+  }
 }
