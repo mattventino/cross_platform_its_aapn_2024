@@ -1,26 +1,13 @@
-import 'package:ecommerce/src/models/product.model.dart';
 import 'package:ecommerce/src/providers/request.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  late Future<List<ProductModel>> request;
-
-  @override
-  void initState() {
-    super.initState();
-    request = fetchProducts();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(productsProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -28,29 +15,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(40),
-        child: FutureBuilder(
-          future: request,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-
-            if (snapshot.hasError) {
-              print(snapshot.error);
-              return const Center(
-                child: Text("wooops!"),
-              );
-            }
-
-            final data = snapshot.data!;
-            return ListView(
+        child: switch (state) {
+          AsyncData(:final value) => ListView(
               children: [
-                for (final product in data)
+                for (final product in value)
                   Card(
                     margin: const EdgeInsets.all(24),
-                    color: theme.colorScheme.secondary,
                     child: Column(
                       children: [
                         Text(product.title),
@@ -63,9 +33,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )
               ],
-            );
-          },
-        ),
+            ),
+          AsyncError() => const Center(
+              child: Text("wooops!"),
+            ),
+          _ => const Center(
+              child: CircularProgressIndicator(),
+            ),
+        },
       ),
     );
   }
