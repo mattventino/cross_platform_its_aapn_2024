@@ -13,6 +13,11 @@ _$ProductApiModelImpl _$$ProductApiModelImplFromJson(
       name: json['name'] as String,
       description: json['description'] as String,
       price: (json['price'] as num).toDouble(),
+      ean: json['ean'] as String,
+      upc: json['upc'] as String,
+      image: json['image'] as String,
+      net_price: (json['net_price'] as num).toDouble(),
+      taxes: (json['taxes'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ProductApiModelImplToJson(
@@ -22,4 +27,9 @@ Map<String, dynamic> _$$ProductApiModelImplToJson(
       'name': instance.name,
       'description': instance.description,
       'price': instance.price,
+      'ean': instance.ean,
+      'upc': instance.upc,
+      'image': instance.image,
+      'net_price': instance.net_price,
+      'taxes': instance.taxes,
     };

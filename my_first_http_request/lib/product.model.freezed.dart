@@ -24,6 +24,11 @@ mixin _$ProductApiModel {
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
+  String get ean => throw _privateConstructorUsedError;
+  String get upc => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
+  double get net_price => throw _privateConstructorUsedError;
+  int get taxes => throw _privateConstructorUsedError;
 
   /// Serializes this ProductApiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +46,16 @@ abstract class $ProductApiModelCopyWith<$Res> {
           ProductApiModel value, $Res Function(ProductApiModel) then) =
       _$ProductApiModelCopyWithImpl<$Res, ProductApiModel>;
   @useResult
-  $Res call({int id, String name, String description, double price});
+  $Res call(
+      {int id,
+      String name,
+      String description,
+      double price,
+      String ean,
+      String upc,
+      String image,
+      double net_price,
+      int taxes});
 }
 
 /// @nodoc
@@ -63,6 +77,11 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
     Object? name = null,
     Object? description = null,
     Object? price = null,
+    Object? ean = null,
+    Object? upc = null,
+    Object? image = null,
+    Object? net_price = null,
+    Object? taxes = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -81,6 +100,26 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      ean: null == ean
+          ? _value.ean
+          : ean // ignore: cast_nullable_to_non_nullable
+              as String,
+      upc: null == upc
+          ? _value.upc
+          : upc // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      net_price: null == net_price
+          ? _value.net_price
+          : net_price // ignore: cast_nullable_to_non_nullable
+              as double,
+      taxes: null == taxes
+          ? _value.taxes
+          : taxes // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -93,7 +132,16 @@ abstract class _$$ProductApiModelImplCopyWith<$Res>
       __$$ProductApiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String description, double price});
+  $Res call(
+      {int id,
+      String name,
+      String description,
+      double price,
+      String ean,
+      String upc,
+      String image,
+      double net_price,
+      int taxes});
 }
 
 /// @nodoc
@@ -113,6 +161,11 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
     Object? name = null,
     Object? description = null,
     Object? price = null,
+    Object? ean = null,
+    Object? upc = null,
+    Object? image = null,
+    Object? net_price = null,
+    Object? taxes = null,
   }) {
     return _then(_$ProductApiModelImpl(
       id: null == id
@@ -131,6 +184,26 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      ean: null == ean
+          ? _value.ean
+          : ean // ignore: cast_nullable_to_non_nullable
+              as String,
+      upc: null == upc
+          ? _value.upc
+          : upc // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      net_price: null == net_price
+          ? _value.net_price
+          : net_price // ignore: cast_nullable_to_non_nullable
+              as double,
+      taxes: null == taxes
+          ? _value.taxes
+          : taxes // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -142,7 +215,12 @@ class _$ProductApiModelImpl implements _ProductApiModel {
       {required this.id,
       required this.name,
       required this.description,
-      required this.price});
+      required this.price,
+      required this.ean,
+      required this.upc,
+      required this.image,
+      required this.net_price,
+      required this.taxes});
 
   factory _$ProductApiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductApiModelImplFromJson(json);
@@ -155,10 +233,20 @@ class _$ProductApiModelImpl implements _ProductApiModel {
   final String description;
   @override
   final double price;
+  @override
+  final String ean;
+  @override
+  final String upc;
+  @override
+  final String image;
+  @override
+  final double net_price;
+  @override
+  final int taxes;
 
   @override
   String toString() {
-    return 'ProductApiModel(id: $id, name: $name, description: $description, price: $price)';
+    return 'ProductApiModel(id: $id, name: $name, description: $description, price: $price, ean: $ean, upc: $upc, image: $image, net_price: $net_price, taxes: $taxes)';
   }
 
   @override
@@ -170,12 +258,19 @@ class _$ProductApiModelImpl implements _ProductApiModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.ean, ean) || other.ean == ean) &&
+            (identical(other.upc, upc) || other.upc == upc) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.net_price, net_price) ||
+                other.net_price == net_price) &&
+            (identical(other.taxes, taxes) || other.taxes == taxes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, price);
+  int get hashCode => Object.hash(runtimeType, id, name, description, price,
+      ean, upc, image, net_price, taxes);
 
   /// Create a copy of ProductApiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -199,7 +294,12 @@ abstract class _ProductApiModel implements ProductApiModel {
       {required final int id,
       required final String name,
       required final String description,
-      required final double price}) = _$ProductApiModelImpl;
+      required final double price,
+      required final String ean,
+      required final String upc,
+      required final String image,
+      required final double net_price,
+      required final int taxes}) = _$ProductApiModelImpl;
 
   factory _ProductApiModel.fromJson(Map<String, dynamic> json) =
       _$ProductApiModelImpl.fromJson;
@@ -212,6 +312,16 @@ abstract class _ProductApiModel implements ProductApiModel {
   String get description;
   @override
   double get price;
+  @override
+  String get ean;
+  @override
+  String get upc;
+  @override
+  String get image;
+  @override
+  double get net_price;
+  @override
+  int get taxes;
 
   /// Create a copy of ProductApiModel
   /// with the given fields replaced by the non-null parameter values.
