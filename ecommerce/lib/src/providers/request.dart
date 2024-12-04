@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce/src/models/product.model.dart';
 import 'package:ecommerce/src/models/response.api.model.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // https://open.spotify.com/track/2CVWc2gNM8YCTMdFXJI8Wg?si=df8d6ff523104e5c
 
-Future<List<ProductModel>> fetchProducts() async {
+part 'request.g.dart';
+
+@riverpod
+FutureOr<List<ProductModel>> products(ProductsRef ref) async {
   final client = Dio(
     BaseOptions(
       receiveTimeout: const Duration(seconds: 3),

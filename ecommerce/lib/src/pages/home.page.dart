@@ -1,5 +1,5 @@
-import 'package:ecommerce/src/logic/request.dart';
 import 'package:ecommerce/src/models/product.model.dart';
+import 'package:ecommerce/src/providers/request.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
