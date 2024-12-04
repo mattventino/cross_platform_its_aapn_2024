@@ -1,5 +1,5 @@
 import 'package:ecommerce/src/logic/request.dart';
-import 'package:ecommerce/src/models/response.api.model.dart';
+import 'package:ecommerce/src/models/product.model.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<ResponseApiModel> request;
+  late Future<List<ProductModel>> request;
 
   @override
   void initState() {
@@ -38,15 +38,16 @@ class _HomePageState extends State<HomePage> {
             }
 
             if (snapshot.hasError) {
+              print(snapshot.error);
               return const Center(
                 child: Text("wooops!"),
               );
             }
 
-            final response = snapshot.data!;
+            final data = snapshot.data!;
             return ListView(
               children: [
-                for (final product in response.data)
+                for (final product in data)
                   Card(
                     margin: const EdgeInsets.all(24),
                     color: theme.colorScheme.secondary,

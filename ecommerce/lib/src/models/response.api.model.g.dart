@@ -8,14 +8,24 @@ part of 'response.api.model.dart';
 
 _$ResponseApiModelImpl _$$ResponseApiModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$ResponseApiModelImpl(
-      data: (json['data'] as List<dynamic>)
-          .map((e) => ProductApiModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+    $checkedCreate(
+      r'_$ResponseApiModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ResponseApiModelImpl(
+          data: $checkedConvert(
+              'data',
+              (v) => (v as List<dynamic>)
+                  .map((e) =>
+                      ProductApiModel.fromJson(e as Map<String, dynamic>))
+                  .toList()),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$ResponseApiModelImplToJson(
         _$ResponseApiModelImpl instance) =>
     <String, dynamic>{
-      'data': instance.data,
+      'data': instance.data.map((e) => e.toJson()).toList(),
     };
