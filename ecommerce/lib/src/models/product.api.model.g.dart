@@ -20,6 +20,12 @@ _$ProductApiModelImpl _$$ProductApiModelImplFromJson(
           ean: $checkedConvert('ean', (v) => v as String),
           upc: $checkedConvert('upc', (v) => v as String),
           image: $checkedConvert('image', (v) => v as String),
+          images: $checkedConvert(
+              'images',
+              (v) => (v as List<dynamic>)
+                  .map((e) =>
+                      ProductImageApiModel.fromJson(e as Map<String, dynamic>))
+                  .toList()),
           netPrice: $checkedConvert('net_price', (v) => (v as num).toDouble()),
           taxes: $checkedConvert('taxes', (v) => (v as num).toInt()),
         );
@@ -38,6 +44,7 @@ Map<String, dynamic> _$$ProductApiModelImplToJson(
       'ean': instance.ean,
       'upc': instance.upc,
       'image': instance.image,
+      'images': instance.images.map((e) => e.toJson()).toList(),
       'net_price': instance.netPrice,
       'taxes': instance.taxes,
     };

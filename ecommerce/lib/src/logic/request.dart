@@ -20,7 +20,7 @@ Future<List<ProductModel>> fetchProducts() async {
       for (final model in apiModel.data)
         ProductModel(
           title: model.name,
-          imageUrl: model.image,
+          imageUrl: model.images.first.url,
           description: model.description,
           price: model.netPrice,
           tax: model.netPrice * (1 + model.taxes / 100),

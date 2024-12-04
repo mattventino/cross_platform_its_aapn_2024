@@ -27,6 +27,7 @@ mixin _$ProductApiModel {
   String get ean => throw _privateConstructorUsedError;
   String get upc => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  List<ProductImageApiModel> get images => throw _privateConstructorUsedError;
   double get netPrice => throw _privateConstructorUsedError;
   int get taxes => throw _privateConstructorUsedError;
 
@@ -54,6 +55,7 @@ abstract class $ProductApiModelCopyWith<$Res> {
       String ean,
       String upc,
       String image,
+      List<ProductImageApiModel> images,
       double netPrice,
       int taxes});
 }
@@ -80,6 +82,7 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
     Object? ean = null,
     Object? upc = null,
     Object? image = null,
+    Object? images = null,
     Object? netPrice = null,
     Object? taxes = null,
   }) {
@@ -112,6 +115,10 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      images: null == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<ProductImageApiModel>,
       netPrice: null == netPrice
           ? _value.netPrice
           : netPrice // ignore: cast_nullable_to_non_nullable
@@ -140,6 +147,7 @@ abstract class _$$ProductApiModelImplCopyWith<$Res>
       String ean,
       String upc,
       String image,
+      List<ProductImageApiModel> images,
       double netPrice,
       int taxes});
 }
@@ -164,6 +172,7 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
     Object? ean = null,
     Object? upc = null,
     Object? image = null,
+    Object? images = null,
     Object? netPrice = null,
     Object? taxes = null,
   }) {
@@ -196,6 +205,10 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      images: null == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<ProductImageApiModel>,
       netPrice: null == netPrice
           ? _value.netPrice
           : netPrice // ignore: cast_nullable_to_non_nullable
@@ -219,8 +232,10 @@ class _$ProductApiModelImpl implements _ProductApiModel {
       required this.ean,
       required this.upc,
       required this.image,
+      required final List<ProductImageApiModel> images,
       required this.netPrice,
-      required this.taxes});
+      required this.taxes})
+      : _images = images;
 
   factory _$ProductApiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductApiModelImplFromJson(json);
@@ -239,6 +254,14 @@ class _$ProductApiModelImpl implements _ProductApiModel {
   final String upc;
   @override
   final String image;
+  final List<ProductImageApiModel> _images;
+  @override
+  List<ProductImageApiModel> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_images);
+  }
+
   @override
   final double netPrice;
   @override
@@ -246,7 +269,7 @@ class _$ProductApiModelImpl implements _ProductApiModel {
 
   @override
   String toString() {
-    return 'ProductApiModel(id: $id, name: $name, description: $description, price: $price, ean: $ean, upc: $upc, image: $image, netPrice: $netPrice, taxes: $taxes)';
+    return 'ProductApiModel(id: $id, name: $name, description: $description, price: $price, ean: $ean, upc: $upc, image: $image, images: $images, netPrice: $netPrice, taxes: $taxes)';
   }
 
   @override
@@ -262,6 +285,7 @@ class _$ProductApiModelImpl implements _ProductApiModel {
             (identical(other.ean, ean) || other.ean == ean) &&
             (identical(other.upc, upc) || other.upc == upc) &&
             (identical(other.image, image) || other.image == image) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.netPrice, netPrice) ||
                 other.netPrice == netPrice) &&
             (identical(other.taxes, taxes) || other.taxes == taxes));
@@ -269,8 +293,18 @@ class _$ProductApiModelImpl implements _ProductApiModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, price,
-      ean, upc, image, netPrice, taxes);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      description,
+      price,
+      ean,
+      upc,
+      image,
+      const DeepCollectionEquality().hash(_images),
+      netPrice,
+      taxes);
 
   /// Create a copy of ProductApiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -298,6 +332,7 @@ abstract class _ProductApiModel implements ProductApiModel {
       required final String ean,
       required final String upc,
       required final String image,
+      required final List<ProductImageApiModel> images,
       required final double netPrice,
       required final int taxes}) = _$ProductApiModelImpl;
 
@@ -318,6 +353,8 @@ abstract class _ProductApiModel implements ProductApiModel {
   String get upc;
   @override
   String get image;
+  @override
+  List<ProductImageApiModel> get images;
   @override
   double get netPrice;
   @override
