@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flickr/api/http.client.dart';
+import 'package:flickr/api/models/product.response.api.model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import 'models/product.api.model.dart';
 
 part 'products.api.g.dart';
 
@@ -16,8 +15,8 @@ class ProductsApi {
   const ProductsApi(this.client);
   final Dio client;
 
-  Future<ProductApiModel> fetchAll() async {
+  Future<ProductResponseApiModel> fetchAll() async {
     final result = await client.get<Map<String, dynamic>>("/products");
-    return ProductApiModel.fromJson(result.data!);
+    return ProductResponseApiModel.fromJson(result.data!);
   }
 }
