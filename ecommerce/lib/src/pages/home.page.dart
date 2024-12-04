@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _products = <ProductModel>[];
+  final _isLoading = true;
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +22,29 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(40),
-        child: ListView(
-          children: [
-            for (final product in _products)
-              Card(
-                margin: const EdgeInsets.all(24),
-                color: theme.colorScheme.secondary,
-                child: Column(
-                  children: [
-                    Text(product.title),
-                    Image.network(product.imageUrl),
-                    Text(product.description, maxLines: 3),
-                    Text(
-                      "${product.price}",
-                    )
-                  ],
-                ),
+        child: _isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
               )
-          ],
-        ),
+            : ListView(
+                children: [
+                  for (final product in _products)
+                    Card(
+                      margin: const EdgeInsets.all(24),
+                      color: theme.colorScheme.secondary,
+                      child: Column(
+                        children: [
+                          Text(product.title),
+                          Image.network(product.imageUrl),
+                          Text(product.description, maxLines: 3),
+                          Text(
+                            "${product.price}",
+                          )
+                        ],
+                      ),
+                    )
+                ],
+              ),
       ),
     );
   }
