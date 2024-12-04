@@ -13,7 +13,7 @@ class ProductApiModel with _$ProductApiModel {
     required String ean,
     required String upc,
     required String image,
-    required double net_price,
+    required double netPrice,
     required int taxes,
   }) = _ProductApiModel;
   factory ProductApiModel.fromJson(Map<String, dynamic> json) =>

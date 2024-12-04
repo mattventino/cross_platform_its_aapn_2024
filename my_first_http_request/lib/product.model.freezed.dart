@@ -27,7 +27,7 @@ mixin _$ProductApiModel {
   String get ean => throw _privateConstructorUsedError;
   String get upc => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  double get net_price => throw _privateConstructorUsedError;
+  double get netPrice => throw _privateConstructorUsedError;
   int get taxes => throw _privateConstructorUsedError;
 
   /// Serializes this ProductApiModel to a JSON map.
@@ -54,7 +54,7 @@ abstract class $ProductApiModelCopyWith<$Res> {
       String ean,
       String upc,
       String image,
-      double net_price,
+      double netPrice,
       int taxes});
 }
 
@@ -80,7 +80,7 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
     Object? ean = null,
     Object? upc = null,
     Object? image = null,
-    Object? net_price = null,
+    Object? netPrice = null,
     Object? taxes = null,
   }) {
     return _then(_value.copyWith(
@@ -112,9 +112,9 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      net_price: null == net_price
-          ? _value.net_price
-          : net_price // ignore: cast_nullable_to_non_nullable
+      netPrice: null == netPrice
+          ? _value.netPrice
+          : netPrice // ignore: cast_nullable_to_non_nullable
               as double,
       taxes: null == taxes
           ? _value.taxes
@@ -140,7 +140,7 @@ abstract class _$$ProductApiModelImplCopyWith<$Res>
       String ean,
       String upc,
       String image,
-      double net_price,
+      double netPrice,
       int taxes});
 }
 
@@ -164,7 +164,7 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
     Object? ean = null,
     Object? upc = null,
     Object? image = null,
-    Object? net_price = null,
+    Object? netPrice = null,
     Object? taxes = null,
   }) {
     return _then(_$ProductApiModelImpl(
@@ -196,9 +196,9 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      net_price: null == net_price
-          ? _value.net_price
-          : net_price // ignore: cast_nullable_to_non_nullable
+      netPrice: null == netPrice
+          ? _value.netPrice
+          : netPrice // ignore: cast_nullable_to_non_nullable
               as double,
       taxes: null == taxes
           ? _value.taxes
@@ -219,7 +219,7 @@ class _$ProductApiModelImpl implements _ProductApiModel {
       required this.ean,
       required this.upc,
       required this.image,
-      required this.net_price,
+      required this.netPrice,
       required this.taxes});
 
   factory _$ProductApiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -240,13 +240,13 @@ class _$ProductApiModelImpl implements _ProductApiModel {
   @override
   final String image;
   @override
-  final double net_price;
+  final double netPrice;
   @override
   final int taxes;
 
   @override
   String toString() {
-    return 'ProductApiModel(id: $id, name: $name, description: $description, price: $price, ean: $ean, upc: $upc, image: $image, net_price: $net_price, taxes: $taxes)';
+    return 'ProductApiModel(id: $id, name: $name, description: $description, price: $price, ean: $ean, upc: $upc, image: $image, netPrice: $netPrice, taxes: $taxes)';
   }
 
   @override
@@ -262,15 +262,15 @@ class _$ProductApiModelImpl implements _ProductApiModel {
             (identical(other.ean, ean) || other.ean == ean) &&
             (identical(other.upc, upc) || other.upc == upc) &&
             (identical(other.image, image) || other.image == image) &&
-            (identical(other.net_price, net_price) ||
-                other.net_price == net_price) &&
+            (identical(other.netPrice, netPrice) ||
+                other.netPrice == netPrice) &&
             (identical(other.taxes, taxes) || other.taxes == taxes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, description, price,
-      ean, upc, image, net_price, taxes);
+      ean, upc, image, netPrice, taxes);
 
   /// Create a copy of ProductApiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -298,7 +298,7 @@ abstract class _ProductApiModel implements ProductApiModel {
       required final String ean,
       required final String upc,
       required final String image,
-      required final double net_price,
+      required final double netPrice,
       required final int taxes}) = _$ProductApiModelImpl;
 
   factory _ProductApiModel.fromJson(Map<String, dynamic> json) =
@@ -319,7 +319,7 @@ abstract class _ProductApiModel implements ProductApiModel {
   @override
   String get image;
   @override
-  double get net_price;
+  double get netPrice;
   @override
   int get taxes;
 

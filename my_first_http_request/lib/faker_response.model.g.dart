@@ -8,14 +8,24 @@ part of 'faker_response.model.dart';
 
 _$FakerResponseApiModelImpl _$$FakerResponseApiModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$FakerResponseApiModelImpl(
-      data: (json['data'] as List<dynamic>)
-          .map((e) => ProductApiModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+    $checkedCreate(
+      r'_$FakerResponseApiModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$FakerResponseApiModelImpl(
+          data: $checkedConvert(
+              'data',
+              (v) => (v as List<dynamic>)
+                  .map((e) =>
+                      ProductApiModel.fromJson(e as Map<String, dynamic>))
+                  .toList()),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$FakerResponseApiModelImplToJson(
         _$FakerResponseApiModelImpl instance) =>
     <String, dynamic>{
-      'data': instance.data,
+      'data': instance.data.map((e) => e.toJson()).toList(),
     };

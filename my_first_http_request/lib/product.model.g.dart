@@ -8,16 +8,24 @@ part of 'product.model.dart';
 
 _$ProductApiModelImpl _$$ProductApiModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductApiModelImpl(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      description: json['description'] as String,
-      price: (json['price'] as num).toDouble(),
-      ean: json['ean'] as String,
-      upc: json['upc'] as String,
-      image: json['image'] as String,
-      net_price: (json['net_price'] as num).toDouble(),
-      taxes: (json['taxes'] as num).toInt(),
+    $checkedCreate(
+      r'_$ProductApiModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ProductApiModelImpl(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          name: $checkedConvert('name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          price: $checkedConvert('price', (v) => (v as num).toDouble()),
+          ean: $checkedConvert('ean', (v) => v as String),
+          upc: $checkedConvert('upc', (v) => v as String),
+          image: $checkedConvert('image', (v) => v as String),
+          netPrice: $checkedConvert('net_price', (v) => (v as num).toDouble()),
+          taxes: $checkedConvert('taxes', (v) => (v as num).toInt()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'netPrice': 'net_price'},
     );
 
 Map<String, dynamic> _$$ProductApiModelImplToJson(
@@ -30,6 +38,6 @@ Map<String, dynamic> _$$ProductApiModelImplToJson(
       'ean': instance.ean,
       'upc': instance.upc,
       'image': instance.image,
-      'net_price': instance.net_price,
+      'net_price': instance.netPrice,
       'taxes': instance.taxes,
     };
