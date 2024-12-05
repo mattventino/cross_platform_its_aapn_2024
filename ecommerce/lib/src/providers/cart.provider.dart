@@ -10,6 +10,13 @@ class Cart extends _$Cart {
     return [];
   }
 
-  // external void addToCart(ProductModel product);
-  // external void removeFromCart(ProductModel product);
+  void addToCart(ProductModel product) {
+    state = [product, ...state];
+  }
+
+  void removeFromCart(ProductModel product) {
+    state = [
+      ...state.where((element) => element != product),
+    ];
+  }
 }
