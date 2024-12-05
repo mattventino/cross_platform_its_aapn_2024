@@ -29,7 +29,6 @@ mixin _$ProductApiModel {
   double get rating => throw _privateConstructorUsedError;
   int get stock => throw _privateConstructorUsedError;
   List<String> get tags => throw _privateConstructorUsedError;
-  String get brand => throw _privateConstructorUsedError;
   String get sku => throw _privateConstructorUsedError;
   int get weight => throw _privateConstructorUsedError;
   ProductDimensionsApiModel get dimensions =>
@@ -43,6 +42,7 @@ mixin _$ProductApiModel {
   ProductMetaApiModel get meta => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
   String get thumbnail => throw _privateConstructorUsedError;
+  String? get brand => throw _privateConstructorUsedError;
 
   /// Serializes this ProductApiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -70,7 +70,6 @@ abstract class $ProductApiModelCopyWith<$Res> {
       double rating,
       int stock,
       List<String> tags,
-      String brand,
       String sku,
       int weight,
       ProductDimensionsApiModel dimensions,
@@ -82,7 +81,8 @@ abstract class $ProductApiModelCopyWith<$Res> {
       int minimumOrderQuantity,
       ProductMetaApiModel meta,
       List<String> images,
-      String thumbnail});
+      String thumbnail,
+      String? brand});
 
   $ProductDimensionsApiModelCopyWith<$Res> get dimensions;
   $ProductMetaApiModelCopyWith<$Res> get meta;
@@ -112,7 +112,6 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
     Object? rating = null,
     Object? stock = null,
     Object? tags = null,
-    Object? brand = null,
     Object? sku = null,
     Object? weight = null,
     Object? dimensions = null,
@@ -125,6 +124,7 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
     Object? meta = null,
     Object? images = null,
     Object? thumbnail = null,
+    Object? brand = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -163,10 +163,6 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String,
       sku: null == sku
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
@@ -215,6 +211,10 @@ class _$ProductApiModelCopyWithImpl<$Res, $Val extends ProductApiModel>
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -257,7 +257,6 @@ abstract class _$$ProductApiModelImplCopyWith<$Res>
       double rating,
       int stock,
       List<String> tags,
-      String brand,
       String sku,
       int weight,
       ProductDimensionsApiModel dimensions,
@@ -269,7 +268,8 @@ abstract class _$$ProductApiModelImplCopyWith<$Res>
       int minimumOrderQuantity,
       ProductMetaApiModel meta,
       List<String> images,
-      String thumbnail});
+      String thumbnail,
+      String? brand});
 
   @override
   $ProductDimensionsApiModelCopyWith<$Res> get dimensions;
@@ -299,7 +299,6 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
     Object? rating = null,
     Object? stock = null,
     Object? tags = null,
-    Object? brand = null,
     Object? sku = null,
     Object? weight = null,
     Object? dimensions = null,
@@ -312,6 +311,7 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
     Object? meta = null,
     Object? images = null,
     Object? thumbnail = null,
+    Object? brand = freezed,
   }) {
     return _then(_$ProductApiModelImpl(
       id: null == id
@@ -350,10 +350,6 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String,
       sku: null == sku
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
@@ -402,6 +398,10 @@ class __$$ProductApiModelImplCopyWithImpl<$Res>
           ? _value.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -419,7 +419,6 @@ class _$ProductApiModelImpl implements _ProductApiModel {
       required this.rating,
       required this.stock,
       required final List<String> tags,
-      required this.brand,
       required this.sku,
       required this.weight,
       required this.dimensions,
@@ -431,7 +430,8 @@ class _$ProductApiModelImpl implements _ProductApiModel {
       required this.minimumOrderQuantity,
       required this.meta,
       required final List<String> images,
-      required this.thumbnail})
+      required this.thumbnail,
+      this.brand})
       : _tags = tags,
         _reviews = reviews,
         _images = images;
@@ -463,8 +463,6 @@ class _$ProductApiModelImpl implements _ProductApiModel {
     return EqualUnmodifiableListView(_tags);
   }
 
-  @override
-  final String brand;
   @override
   final String sku;
   @override
@@ -501,10 +499,12 @@ class _$ProductApiModelImpl implements _ProductApiModel {
 
   @override
   final String thumbnail;
+  @override
+  final String? brand;
 
   @override
   String toString() {
-    return 'ProductApiModel(id: $id, title: $title, description: $description, category: $category, price: $price, discountPercentage: $discountPercentage, rating: $rating, stock: $stock, tags: $tags, brand: $brand, sku: $sku, weight: $weight, dimensions: $dimensions, warrantyInformation: $warrantyInformation, shippingInformation: $shippingInformation, availabilityStatus: $availabilityStatus, reviews: $reviews, returnPolicy: $returnPolicy, minimumOrderQuantity: $minimumOrderQuantity, meta: $meta, images: $images, thumbnail: $thumbnail)';
+    return 'ProductApiModel(id: $id, title: $title, description: $description, category: $category, price: $price, discountPercentage: $discountPercentage, rating: $rating, stock: $stock, tags: $tags, sku: $sku, weight: $weight, dimensions: $dimensions, warrantyInformation: $warrantyInformation, shippingInformation: $shippingInformation, availabilityStatus: $availabilityStatus, reviews: $reviews, returnPolicy: $returnPolicy, minimumOrderQuantity: $minimumOrderQuantity, meta: $meta, images: $images, thumbnail: $thumbnail, brand: $brand)';
   }
 
   @override
@@ -524,7 +524,6 @@ class _$ProductApiModelImpl implements _ProductApiModel {
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.stock, stock) || other.stock == stock) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
-            (identical(other.brand, brand) || other.brand == brand) &&
             (identical(other.sku, sku) || other.sku == sku) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.dimensions, dimensions) ||
@@ -543,7 +542,8 @@ class _$ProductApiModelImpl implements _ProductApiModel {
             (identical(other.meta, meta) || other.meta == meta) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.thumbnail, thumbnail) ||
-                other.thumbnail == thumbnail));
+                other.thumbnail == thumbnail) &&
+            (identical(other.brand, brand) || other.brand == brand));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -559,7 +559,6 @@ class _$ProductApiModelImpl implements _ProductApiModel {
         rating,
         stock,
         const DeepCollectionEquality().hash(_tags),
-        brand,
         sku,
         weight,
         dimensions,
@@ -571,7 +570,8 @@ class _$ProductApiModelImpl implements _ProductApiModel {
         minimumOrderQuantity,
         meta,
         const DeepCollectionEquality().hash(_images),
-        thumbnail
+        thumbnail,
+        brand
       ]);
 
   /// Create a copy of ProductApiModel
@@ -602,7 +602,6 @@ abstract class _ProductApiModel implements ProductApiModel {
       required final double rating,
       required final int stock,
       required final List<String> tags,
-      required final String brand,
       required final String sku,
       required final int weight,
       required final ProductDimensionsApiModel dimensions,
@@ -614,7 +613,8 @@ abstract class _ProductApiModel implements ProductApiModel {
       required final int minimumOrderQuantity,
       required final ProductMetaApiModel meta,
       required final List<String> images,
-      required final String thumbnail}) = _$ProductApiModelImpl;
+      required final String thumbnail,
+      final String? brand}) = _$ProductApiModelImpl;
 
   factory _ProductApiModel.fromJson(Map<String, dynamic> json) =
       _$ProductApiModelImpl.fromJson;
@@ -637,8 +637,6 @@ abstract class _ProductApiModel implements ProductApiModel {
   int get stock;
   @override
   List<String> get tags;
-  @override
-  String get brand;
   @override
   String get sku;
   @override
@@ -663,6 +661,8 @@ abstract class _ProductApiModel implements ProductApiModel {
   List<String> get images;
   @override
   String get thumbnail;
+  @override
+  String? get brand;
 
   /// Create a copy of ProductApiModel
   /// with the given fields replaced by the non-null parameter values.

@@ -8,33 +8,52 @@ part of 'product.api.model.dart';
 
 _$ProductApiModelImpl _$$ProductApiModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductApiModelImpl(
-      id: (json['id'] as num).toInt(),
-      title: json['title'] as String,
-      description: json['description'] as String,
-      category: json['category'] as String,
-      price: (json['price'] as num).toDouble(),
-      discountPercentage: (json['discountPercentage'] as num).toDouble(),
-      rating: (json['rating'] as num).toDouble(),
-      stock: (json['stock'] as num).toInt(),
-      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
-      brand: json['brand'] as String,
-      sku: json['sku'] as String,
-      weight: (json['weight'] as num).toInt(),
-      dimensions: ProductDimensionsApiModel.fromJson(
-          json['dimensions'] as Map<String, dynamic>),
-      warrantyInformation: json['warrantyInformation'] as String,
-      shippingInformation: json['shippingInformation'] as String,
-      availabilityStatus: json['availabilityStatus'] as String,
-      reviews: (json['reviews'] as List<dynamic>)
-          .map((e) => ProductReviewApiModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      returnPolicy: json['returnPolicy'] as String,
-      minimumOrderQuantity: (json['minimumOrderQuantity'] as num).toInt(),
-      meta: ProductMetaApiModel.fromJson(json['meta'] as Map<String, dynamic>),
-      images:
-          (json['images'] as List<dynamic>).map((e) => e as String).toList(),
-      thumbnail: json['thumbnail'] as String,
+    $checkedCreate(
+      r'_$ProductApiModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ProductApiModelImpl(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          title: $checkedConvert('title', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          category: $checkedConvert('category', (v) => v as String),
+          price: $checkedConvert('price', (v) => (v as num).toDouble()),
+          discountPercentage: $checkedConvert(
+              'discountPercentage', (v) => (v as num).toDouble()),
+          rating: $checkedConvert('rating', (v) => (v as num).toDouble()),
+          stock: $checkedConvert('stock', (v) => (v as num).toInt()),
+          tags: $checkedConvert('tags',
+              (v) => (v as List<dynamic>).map((e) => e as String).toList()),
+          sku: $checkedConvert('sku', (v) => v as String),
+          weight: $checkedConvert('weight', (v) => (v as num).toInt()),
+          dimensions: $checkedConvert(
+              'dimensions',
+              (v) => ProductDimensionsApiModel.fromJson(
+                  v as Map<String, dynamic>)),
+          warrantyInformation:
+              $checkedConvert('warrantyInformation', (v) => v as String),
+          shippingInformation:
+              $checkedConvert('shippingInformation', (v) => v as String),
+          availabilityStatus:
+              $checkedConvert('availabilityStatus', (v) => v as String),
+          reviews: $checkedConvert(
+              'reviews',
+              (v) => (v as List<dynamic>)
+                  .map((e) =>
+                      ProductReviewApiModel.fromJson(e as Map<String, dynamic>))
+                  .toList()),
+          returnPolicy: $checkedConvert('returnPolicy', (v) => v as String),
+          minimumOrderQuantity: $checkedConvert(
+              'minimumOrderQuantity', (v) => (v as num).toInt()),
+          meta: $checkedConvert('meta',
+              (v) => ProductMetaApiModel.fromJson(v as Map<String, dynamic>)),
+          images: $checkedConvert('images',
+              (v) => (v as List<dynamic>).map((e) => e as String).toList()),
+          thumbnail: $checkedConvert('thumbnail', (v) => v as String),
+          brand: $checkedConvert('brand', (v) => v as String?),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$ProductApiModelImplToJson(
@@ -49,7 +68,6 @@ Map<String, dynamic> _$$ProductApiModelImplToJson(
       'rating': instance.rating,
       'stock': instance.stock,
       'tags': instance.tags,
-      'brand': instance.brand,
       'sku': instance.sku,
       'weight': instance.weight,
       'dimensions': instance.dimensions,
@@ -62,4 +80,5 @@ Map<String, dynamic> _$$ProductApiModelImplToJson(
       'meta': instance.meta,
       'images': instance.images,
       'thumbnail': instance.thumbnail,
+      'brand': instance.brand,
     };

@@ -8,12 +8,19 @@ part of 'product_review.api.model.dart';
 
 _$ProductReviewApiModelImpl _$$ProductReviewApiModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductReviewApiModelImpl(
-      rating: (json['rating'] as num).toInt(),
-      comment: json['comment'] as String,
-      date: DateTime.parse(json['date'] as String),
-      reviewerName: json['reviewerName'] as String,
-      reviewerEmail: json['reviewerEmail'] as String,
+    $checkedCreate(
+      r'_$ProductReviewApiModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ProductReviewApiModelImpl(
+          rating: $checkedConvert('rating', (v) => (v as num).toInt()),
+          comment: $checkedConvert('comment', (v) => v as String),
+          date: $checkedConvert('date', (v) => DateTime.parse(v as String)),
+          reviewerName: $checkedConvert('reviewerName', (v) => v as String),
+          reviewerEmail: $checkedConvert('reviewerEmail', (v) => v as String),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$ProductReviewApiModelImplToJson(

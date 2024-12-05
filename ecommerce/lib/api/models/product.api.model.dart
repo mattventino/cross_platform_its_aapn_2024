@@ -18,7 +18,6 @@ class ProductApiModel with _$ProductApiModel {
     required double rating,
     required int stock,
     required List<String> tags,
-    required String brand,
     required String sku,
     required int weight,
     required ProductDimensionsApiModel dimensions,
@@ -31,6 +30,7 @@ class ProductApiModel with _$ProductApiModel {
     required ProductMetaApiModel meta,
     required List<String> images,
     required String thumbnail,
+    String? brand,
   }) = _ProductApiModel;
   factory ProductApiModel.fromJson(Map<String, dynamic> json) =>
       _$ProductApiModelFromJson(json);

@@ -8,11 +8,20 @@ part of 'product_meta.api.model.dart';
 
 _$ProductMetaApiModelImpl _$$ProductMetaApiModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductMetaApiModelImpl(
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
-      barcode: json['barcode'] as String,
-      qrCode: json['qrCode'] as String,
+    $checkedCreate(
+      r'_$ProductMetaApiModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ProductMetaApiModelImpl(
+          createdAt:
+              $checkedConvert('createdAt', (v) => DateTime.parse(v as String)),
+          updatedAt:
+              $checkedConvert('updatedAt', (v) => DateTime.parse(v as String)),
+          barcode: $checkedConvert('barcode', (v) => v as String),
+          qrCode: $checkedConvert('qrCode', (v) => v as String),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$ProductMetaApiModelImplToJson(

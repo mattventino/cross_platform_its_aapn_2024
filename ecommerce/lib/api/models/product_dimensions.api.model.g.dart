@@ -8,10 +8,17 @@ part of 'product_dimensions.api.model.dart';
 
 _$ProductDimensionsApiModelImpl _$$ProductDimensionsApiModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$ProductDimensionsApiModelImpl(
-      width: (json['width'] as num).toDouble(),
-      height: (json['height'] as num).toDouble(),
-      depth: (json['depth'] as num).toDouble(),
+    $checkedCreate(
+      r'_$ProductDimensionsApiModelImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ProductDimensionsApiModelImpl(
+          width: $checkedConvert('width', (v) => (v as num).toDouble()),
+          height: $checkedConvert('height', (v) => (v as num).toDouble()),
+          depth: $checkedConvert('depth', (v) => (v as num).toDouble()),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$ProductDimensionsApiModelImplToJson(
