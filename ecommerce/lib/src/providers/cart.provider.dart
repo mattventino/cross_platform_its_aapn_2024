@@ -7,6 +7,7 @@ part 'cart.provider.g.dart';
 class Cart extends _$Cart {
   @override
   List<ProductModel> build() {
+    ref.keepAlive();
     return [];
   }
 

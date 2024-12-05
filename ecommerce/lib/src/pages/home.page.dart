@@ -2,6 +2,7 @@ import 'package:ecommerce/src/providers/cart.provider.dart';
 import 'package:ecommerce/src/providers/products.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -9,9 +10,29 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final products = ref.watch(productsProvider);
+    final cartAmount = ref.watch(
+      cartProvider.select((value) => value.length),
+    );
     final theme = Theme.of(context);
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("ecommerce scarso"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Badge.count(
+              count: cartAmount,
+              child: IconButton(
+                onPressed: () {
+                  context.pushNamed('cart');
+                },
+                icon: const Icon(Icons.shopping_cart),
+              ),
+            ),
+          )
+        ],
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(40),
