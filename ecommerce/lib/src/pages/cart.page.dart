@@ -10,15 +10,25 @@ class CartPage extends ConsumerWidget {
     final cart = ref.watch(cartProvider);
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("carrello"),
+      ),
       body: ListView(
         children: [
-          for (final product in cart)
+          for (final (i, product) in cart.indexed)
             ListTile(
               leading: Image.network(product.thumbnail),
               minLeadingWidth: 0,
               title: Text(product.title),
               subtitle: Text(product.description, maxLines: 2),
+              trailing: IconButton(
+                onPressed: () {
+                  ref //
+                      .read(cartProvider.notifier)
+                      .removeFromCart(i);
+                },
+                icon: const Icon(Icons.delete),
+              ),
               isThreeLine: true,
             )
         ],

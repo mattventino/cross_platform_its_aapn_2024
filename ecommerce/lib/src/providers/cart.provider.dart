@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:ecommerce/src/models/product.model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -15,9 +16,11 @@ class Cart extends _$Cart {
     state = [product, ...state];
   }
 
-  void removeFromCart(ProductModel product) {
+  void removeFromCart(int index) {
     state = [
-      ...state.where((element) => element != product),
+      ...state.whereIndexed(
+        (i, element) => i != index,
+      )
     ];
   }
 }
