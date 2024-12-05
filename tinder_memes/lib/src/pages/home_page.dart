@@ -14,6 +14,8 @@ class HomePage extends ConsumerWidget {
       favoriteProvider.select((value) => value.length),
     );
 
+    const iconSize = 72.0;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Meme Tinder"),
@@ -38,18 +40,38 @@ class HomePage extends ConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                  onPanEnd: (details) {
-                    if (details.localPosition.dx > 8) {
-                      ref.invalidate(memeProvider);
-                    }
-
-                    if (details.localPosition.dx < -8) {
-                      ref.read(favoriteProvider.notifier).add(value);
-                      ref.invalidate(memeProvider);
-                    }
-                  },
-                  child: Image.network(value.url),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        iconSize: iconSize,
+                        color: Colors.redAccent,
+                        onPressed: () {
+                          ref.invalidate(memeProvider);
+                        },
+                        icon: const Icon(Icons.cancel),
+                      ),
+                      if (meme.isLoading)
+                        const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      else
+                        Image.network(
+                          value.url,
+                          fit: BoxFit.contain,
+                        ),
+                      IconButton(
+                        iconSize: iconSize,
+                        color: Colors.greenAccent,
+                        onPressed: () {
+                          ref.read(favoriteProvider.notifier).add(value);
+                          ref.invalidate(memeProvider);
+                        },
+                        icon: const Icon(Icons.check_box),
+                      )
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 20),
                 Text(value.title)
