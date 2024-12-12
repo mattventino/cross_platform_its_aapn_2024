@@ -1,26 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'search_provider.dart';
+part of 'human_only_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$searchHash() => r'04d721743327c7060ccf444a364673585e15f238';
+String _$humanOnlyHash() => r'f57f99929e17ee6228bdd01adf2d78d8b7dd38e9';
 
-/// See also [search].
-@ProviderFor(search)
-final searchProvider = AutoDisposeFutureProvider<List<CharacterModel>>.internal(
-  search,
-  name: r'searchProvider',
+/// See also [HumanOnly].
+@ProviderFor(HumanOnly)
+final humanOnlyProvider = AutoDisposeNotifierProvider<HumanOnly, bool>.internal(
+  HumanOnly.new,
+  name: r'humanOnlyProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$searchHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$humanOnlyHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef SearchRef = AutoDisposeFutureProviderRef<List<CharacterModel>>;
+typedef _$HumanOnly = AutoDisposeNotifier<bool>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
