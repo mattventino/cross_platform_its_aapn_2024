@@ -10,7 +10,7 @@ _$InfoApiModelImpl _$$InfoApiModelImplFromJson(Map<String, dynamic> json) =>
     _$InfoApiModelImpl(
       count: (json['count'] as num).toInt(),
       pages: (json['pages'] as num).toInt(),
-      next: json['next'] as String,
+      next: json['next'] as String?,
       prev: json['prev'] as String?,
     );
 

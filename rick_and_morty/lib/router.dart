@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:rick_and_morty/logger.dart';
+import 'package:rick_and_morty/src/pages/home_page.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 final router = GoRouter(
@@ -10,8 +11,7 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       name: 'home',
-      // TODO: add builder
+      builder: (context, state) => const HomePage(),
     ),
-    // TODO: add more routes, if any
   ],
 );

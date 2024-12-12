@@ -9,7 +9,7 @@ class InfoApiModel with _$InfoApiModel {
   const factory InfoApiModel({
     required int count,
     required int pages,
-    required String next,
+    String? next,
     String? prev,
   }) = _InfoApiModel;
   factory InfoApiModel.fromJson(Map<String, dynamic> json) =>

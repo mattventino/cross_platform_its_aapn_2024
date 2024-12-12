@@ -22,7 +22,7 @@ InfoApiModel _$InfoApiModelFromJson(Map<String, dynamic> json) {
 mixin _$InfoApiModel {
   int get count => throw _privateConstructorUsedError;
   int get pages => throw _privateConstructorUsedError;
-  String get next => throw _privateConstructorUsedError;
+  String? get next => throw _privateConstructorUsedError;
   String? get prev => throw _privateConstructorUsedError;
 
   /// Serializes this InfoApiModel to a JSON map.
@@ -41,7 +41,7 @@ abstract class $InfoApiModelCopyWith<$Res> {
           InfoApiModel value, $Res Function(InfoApiModel) then) =
       _$InfoApiModelCopyWithImpl<$Res, InfoApiModel>;
   @useResult
-  $Res call({int count, int pages, String next, String? prev});
+  $Res call({int count, int pages, String? next, String? prev});
 }
 
 /// @nodoc
@@ -61,7 +61,7 @@ class _$InfoApiModelCopyWithImpl<$Res, $Val extends InfoApiModel>
   $Res call({
     Object? count = null,
     Object? pages = null,
-    Object? next = null,
+    Object? next = freezed,
     Object? prev = freezed,
   }) {
     return _then(_value.copyWith(
@@ -73,10 +73,10 @@ class _$InfoApiModelCopyWithImpl<$Res, $Val extends InfoApiModel>
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
               as int,
-      next: null == next
+      next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       prev: freezed == prev
           ? _value.prev
           : prev // ignore: cast_nullable_to_non_nullable
@@ -93,7 +93,7 @@ abstract class _$$InfoApiModelImplCopyWith<$Res>
       __$$InfoApiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int count, int pages, String next, String? prev});
+  $Res call({int count, int pages, String? next, String? prev});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$$InfoApiModelImplCopyWithImpl<$Res>
   $Res call({
     Object? count = null,
     Object? pages = null,
-    Object? next = null,
+    Object? next = freezed,
     Object? prev = freezed,
   }) {
     return _then(_$InfoApiModelImpl(
@@ -123,10 +123,10 @@ class __$$InfoApiModelImplCopyWithImpl<$Res>
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
               as int,
-      next: null == next
+      next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       prev: freezed == prev
           ? _value.prev
           : prev // ignore: cast_nullable_to_non_nullable
@@ -139,10 +139,7 @@ class __$$InfoApiModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InfoApiModelImpl with DiagnosticableTreeMixin implements _InfoApiModel {
   const _$InfoApiModelImpl(
-      {required this.count,
-      required this.pages,
-      required this.next,
-      this.prev});
+      {required this.count, required this.pages, this.next, this.prev});
 
   factory _$InfoApiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$InfoApiModelImplFromJson(json);
@@ -152,7 +149,7 @@ class _$InfoApiModelImpl with DiagnosticableTreeMixin implements _InfoApiModel {
   @override
   final int pages;
   @override
-  final String next;
+  final String? next;
   @override
   final String? prev;
 
@@ -207,7 +204,7 @@ abstract class _InfoApiModel implements InfoApiModel {
   const factory _InfoApiModel(
       {required final int count,
       required final int pages,
-      required final String next,
+      final String? next,
       final String? prev}) = _$InfoApiModelImpl;
 
   factory _InfoApiModel.fromJson(Map<String, dynamic> json) =
@@ -218,7 +215,7 @@ abstract class _InfoApiModel implements InfoApiModel {
   @override
   int get pages;
   @override
-  String get next;
+  String? get next;
   @override
   String? get prev;
 

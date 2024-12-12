@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rick_and_morty/src/providers/query_provider.dart';
+import 'package:rick_and_morty/src/providers/search_provider.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -20,6 +21,8 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final results = ref.watch(searchProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Rick and morty!"),
@@ -48,6 +51,33 @@ class _HomePageState extends ConsumerState<HomePage> {
                   icon: const Icon(Icons.search),
                 ),
               ),
+            ),
+            Expanded(
+              child: switch (results) {
+                AsyncData(:final value) => ListView(
+                    children: [
+                      for (final result in value)
+                        Card(
+                          margin: const EdgeInsets.all(8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(result.name),
+                              const SizedBox(height: 12),
+                              Image.network(result.image),
+                            ],
+                          ),
+                        )
+                    ],
+                  ),
+                AsyncError() => const Center(
+                    child: Text("you're out of the universe"),
+                  ),
+                _ => const Center(
+                    child: CircularProgressIndicator(),
+                  )
+              },
             )
           ],
         ),
