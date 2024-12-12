@@ -15,6 +15,7 @@ _$MostWantedApiModelImpl _$$MostWantedApiModelImplFromJson(
               ?.map((e) => ImageApiModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      rewardMax: (json['rewardMax'] as num?)?.toDouble() ?? 0,
       sex: json['sex'] as String?,
       hair: json['hair'] as String?,
       weight: json['weight'] as String?,
@@ -24,7 +25,6 @@ _$MostWantedApiModelImpl _$$MostWantedApiModelImplFromJson(
       caution: json['caution'] as String?,
       details: json['details'] as String?,
       race: json['race'] as String?,
-      rewardMax: (json['rewardMax'] as num?)?.toDouble() ?? 0,
     );
 
 Map<String, dynamic> _$$MostWantedApiModelImplToJson(
@@ -33,6 +33,7 @@ Map<String, dynamic> _$$MostWantedApiModelImplToJson(
       'uid': instance.uid,
       'title': instance.title,
       'images': instance.images,
+      'rewardMax': instance.rewardMax,
       'sex': instance.sex,
       'hair': instance.hair,
       'weight': instance.weight,
@@ -42,5 +43,4 @@ Map<String, dynamic> _$$MostWantedApiModelImplToJson(
       'caution': instance.caution,
       'details': instance.details,
       'race': instance.race,
-      'rewardMax': instance.rewardMax,
     };

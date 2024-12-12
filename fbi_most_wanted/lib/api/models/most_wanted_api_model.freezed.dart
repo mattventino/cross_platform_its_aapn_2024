@@ -23,6 +23,7 @@ mixin _$MostWantedApiModel {
   String get uid => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   List<ImageApiModel> get images => throw _privateConstructorUsedError;
+  double get rewardMax => throw _privateConstructorUsedError;
   String? get sex => throw _privateConstructorUsedError;
   String? get hair => throw _privateConstructorUsedError;
   String? get weight => throw _privateConstructorUsedError;
@@ -32,7 +33,6 @@ mixin _$MostWantedApiModel {
   String? get caution => throw _privateConstructorUsedError;
   String? get details => throw _privateConstructorUsedError;
   String? get race => throw _privateConstructorUsedError;
-  double get rewardMax => throw _privateConstructorUsedError;
 
   /// Serializes this MostWantedApiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,6 +54,7 @@ abstract class $MostWantedApiModelCopyWith<$Res> {
       {String uid,
       String title,
       List<ImageApiModel> images,
+      double rewardMax,
       String? sex,
       String? hair,
       String? weight,
@@ -62,8 +63,7 @@ abstract class $MostWantedApiModelCopyWith<$Res> {
       String? warningMessage,
       String? caution,
       String? details,
-      String? race,
-      double rewardMax});
+      String? race});
 }
 
 /// @nodoc
@@ -84,6 +84,7 @@ class _$MostWantedApiModelCopyWithImpl<$Res, $Val extends MostWantedApiModel>
     Object? uid = null,
     Object? title = null,
     Object? images = null,
+    Object? rewardMax = null,
     Object? sex = freezed,
     Object? hair = freezed,
     Object? weight = freezed,
@@ -93,7 +94,6 @@ class _$MostWantedApiModelCopyWithImpl<$Res, $Val extends MostWantedApiModel>
     Object? caution = freezed,
     Object? details = freezed,
     Object? race = freezed,
-    Object? rewardMax = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -108,6 +108,10 @@ class _$MostWantedApiModelCopyWithImpl<$Res, $Val extends MostWantedApiModel>
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ImageApiModel>,
+      rewardMax: null == rewardMax
+          ? _value.rewardMax
+          : rewardMax // ignore: cast_nullable_to_non_nullable
+              as double,
       sex: freezed == sex
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -144,10 +148,6 @@ class _$MostWantedApiModelCopyWithImpl<$Res, $Val extends MostWantedApiModel>
           ? _value.race
           : race // ignore: cast_nullable_to_non_nullable
               as String?,
-      rewardMax: null == rewardMax
-          ? _value.rewardMax
-          : rewardMax // ignore: cast_nullable_to_non_nullable
-              as double,
     ) as $Val);
   }
 }
@@ -164,6 +164,7 @@ abstract class _$$MostWantedApiModelImplCopyWith<$Res>
       {String uid,
       String title,
       List<ImageApiModel> images,
+      double rewardMax,
       String? sex,
       String? hair,
       String? weight,
@@ -172,8 +173,7 @@ abstract class _$$MostWantedApiModelImplCopyWith<$Res>
       String? warningMessage,
       String? caution,
       String? details,
-      String? race,
-      double rewardMax});
+      String? race});
 }
 
 /// @nodoc
@@ -192,6 +192,7 @@ class __$$MostWantedApiModelImplCopyWithImpl<$Res>
     Object? uid = null,
     Object? title = null,
     Object? images = null,
+    Object? rewardMax = null,
     Object? sex = freezed,
     Object? hair = freezed,
     Object? weight = freezed,
@@ -201,7 +202,6 @@ class __$$MostWantedApiModelImplCopyWithImpl<$Res>
     Object? caution = freezed,
     Object? details = freezed,
     Object? race = freezed,
-    Object? rewardMax = null,
   }) {
     return _then(_$MostWantedApiModelImpl(
       uid: null == uid
@@ -216,6 +216,10 @@ class __$$MostWantedApiModelImplCopyWithImpl<$Res>
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ImageApiModel>,
+      rewardMax: null == rewardMax
+          ? _value.rewardMax
+          : rewardMax // ignore: cast_nullable_to_non_nullable
+              as double,
       sex: freezed == sex
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -252,10 +256,6 @@ class __$$MostWantedApiModelImplCopyWithImpl<$Res>
           ? _value.race
           : race // ignore: cast_nullable_to_non_nullable
               as String?,
-      rewardMax: null == rewardMax
-          ? _value.rewardMax
-          : rewardMax // ignore: cast_nullable_to_non_nullable
-              as double,
     ));
   }
 }
@@ -269,6 +269,7 @@ class _$MostWantedApiModelImpl
       {required this.uid,
       required this.title,
       final List<ImageApiModel> images = const [],
+      this.rewardMax = 0,
       this.sex,
       this.hair,
       this.weight,
@@ -277,8 +278,7 @@ class _$MostWantedApiModelImpl
       this.warningMessage,
       this.caution,
       this.details,
-      this.race,
-      this.rewardMax = 0})
+      this.race})
       : _images = images;
 
   factory _$MostWantedApiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -298,6 +298,9 @@ class _$MostWantedApiModelImpl
   }
 
   @override
+  @JsonKey()
+  final double rewardMax;
+  @override
   final String? sex;
   @override
   final String? hair;
@@ -315,13 +318,10 @@ class _$MostWantedApiModelImpl
   final String? details;
   @override
   final String? race;
-  @override
-  @JsonKey()
-  final double rewardMax;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MostWantedApiModel(uid: $uid, title: $title, images: $images, sex: $sex, hair: $hair, weight: $weight, heightMax: $heightMax, heightMin: $heightMin, warningMessage: $warningMessage, caution: $caution, details: $details, race: $race, rewardMax: $rewardMax)';
+    return 'MostWantedApiModel(uid: $uid, title: $title, images: $images, rewardMax: $rewardMax, sex: $sex, hair: $hair, weight: $weight, heightMax: $heightMax, heightMin: $heightMin, warningMessage: $warningMessage, caution: $caution, details: $details, race: $race)';
   }
 
   @override
@@ -332,6 +332,7 @@ class _$MostWantedApiModelImpl
       ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('images', images))
+      ..add(DiagnosticsProperty('rewardMax', rewardMax))
       ..add(DiagnosticsProperty('sex', sex))
       ..add(DiagnosticsProperty('hair', hair))
       ..add(DiagnosticsProperty('weight', weight))
@@ -340,8 +341,7 @@ class _$MostWantedApiModelImpl
       ..add(DiagnosticsProperty('warningMessage', warningMessage))
       ..add(DiagnosticsProperty('caution', caution))
       ..add(DiagnosticsProperty('details', details))
-      ..add(DiagnosticsProperty('race', race))
-      ..add(DiagnosticsProperty('rewardMax', rewardMax));
+      ..add(DiagnosticsProperty('race', race));
   }
 
   @override
@@ -352,6 +352,8 @@ class _$MostWantedApiModelImpl
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
+            (identical(other.rewardMax, rewardMax) ||
+                other.rewardMax == rewardMax) &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.hair, hair) || other.hair == hair) &&
             (identical(other.weight, weight) || other.weight == weight) &&
@@ -363,9 +365,7 @@ class _$MostWantedApiModelImpl
                 other.warningMessage == warningMessage) &&
             (identical(other.caution, caution) || other.caution == caution) &&
             (identical(other.details, details) || other.details == details) &&
-            (identical(other.race, race) || other.race == race) &&
-            (identical(other.rewardMax, rewardMax) ||
-                other.rewardMax == rewardMax));
+            (identical(other.race, race) || other.race == race));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -375,6 +375,7 @@ class _$MostWantedApiModelImpl
       uid,
       title,
       const DeepCollectionEquality().hash(_images),
+      rewardMax,
       sex,
       hair,
       weight,
@@ -383,8 +384,7 @@ class _$MostWantedApiModelImpl
       warningMessage,
       caution,
       details,
-      race,
-      rewardMax);
+      race);
 
   /// Create a copy of MostWantedApiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -408,6 +408,7 @@ abstract class _MostWantedApiModel implements MostWantedApiModel {
       {required final String uid,
       required final String title,
       final List<ImageApiModel> images,
+      final double rewardMax,
       final String? sex,
       final String? hair,
       final String? weight,
@@ -416,8 +417,7 @@ abstract class _MostWantedApiModel implements MostWantedApiModel {
       final String? warningMessage,
       final String? caution,
       final String? details,
-      final String? race,
-      final double rewardMax}) = _$MostWantedApiModelImpl;
+      final String? race}) = _$MostWantedApiModelImpl;
 
   factory _MostWantedApiModel.fromJson(Map<String, dynamic> json) =
       _$MostWantedApiModelImpl.fromJson;
@@ -428,6 +428,8 @@ abstract class _MostWantedApiModel implements MostWantedApiModel {
   String get title;
   @override
   List<ImageApiModel> get images;
+  @override
+  double get rewardMax;
   @override
   String? get sex;
   @override
@@ -446,8 +448,6 @@ abstract class _MostWantedApiModel implements MostWantedApiModel {
   String? get details;
   @override
   String? get race;
-  @override
-  double get rewardMax;
 
   /// Create a copy of MostWantedApiModel
   /// with the given fields replaced by the non-null parameter values.

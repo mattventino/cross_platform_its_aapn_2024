@@ -11,6 +11,7 @@ class MostWantedApiModel with _$MostWantedApiModel {
     required String uid,
     required String title,
     @Default([]) List<ImageApiModel> images,
+    @Default(0) double rewardMax,
     String? sex,
     String? hair,
     String? weight,
@@ -20,7 +21,6 @@ class MostWantedApiModel with _$MostWantedApiModel {
     String? caution,
     String? details,
     String? race,
-    @Default(0) double rewardMax,
   }) = _MostWantedApiModel;
   factory MostWantedApiModel.fromJson(Map<String, dynamic> json) =>
       _$MostWantedApiModelFromJson(json);
