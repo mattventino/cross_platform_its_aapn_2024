@@ -1,8 +1,10 @@
 import 'package:breaking_bad/src/models/breaking_bad_quote_model.dart';
 import 'package:breaking_bad/src/models/review_form_model.dart';
+import 'package:breaking_bad/src/providers/reviews_notifier.dart';
 import 'package:breaking_bad/src/widgets/quote_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class ReviewPage extends ConsumerWidget {
@@ -44,12 +46,30 @@ class ReviewPage extends ConsumerWidget {
                       )
                   ],
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    // TODO later
-                  },
-                  child: Text("Invia!"),
-                )
+                ReactiveFormConsumer(
+                  builder: (context, formGroup, child) => ElevatedButton(
+                    onPressed: () {
+                      if (!formGroup.valid) return;
+
+                      final String comment = formGroup //
+                          .control('comment')
+                          .value;
+                      final int rating = formGroup //
+                          .control('rating')
+                          .value;
+                      ref //
+                          .read(reviewsNotifierProvider.notifier)
+                          .addReview(
+                            model: value,
+                            comment: comment,
+                            rating: rating,
+                          );
+
+                      context.pop();
+                    },
+                    child: const Text("Invia!"),
+                  ),
+                ),
               ],
             ),
           )
