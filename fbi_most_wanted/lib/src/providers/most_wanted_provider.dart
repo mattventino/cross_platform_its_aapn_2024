@@ -1,11 +1,14 @@
+import 'dart:math';
+
 import 'package:fbi_most_wanted/api/most_wanted_api.dart';
 import 'package:fbi_most_wanted/src/models/most_wanted_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'most_wanted_provider.g.dart';
 
 @riverpod
-FutureOr<List<MostWantedModel>> mostWanted(MostWantedRef ref, int page) async {
+FutureOr<List<MostWantedModel>> mostWanted(MostWantedRef ref) async {
   final api = ref.watch(mostWantedApiProvider);
+  final page = Random().nextInt(10) + 1;
   final result = await api.getList(page: page);
   final models = result.map((value) {
     var description = '';
