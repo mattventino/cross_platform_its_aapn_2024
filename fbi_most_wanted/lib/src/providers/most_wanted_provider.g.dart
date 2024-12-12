@@ -6,7 +6,7 @@ part of 'most_wanted_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mostWantedHash() => r'990cfd887946ce42b170d29b2d3a6d1679676067';
+String _$mostWantedHash() => r'7decc5580e7a1498c0296033bfa88fcdbe2f15e2';
 
 /// Copied from Dart SDK
 class _SystemHash {

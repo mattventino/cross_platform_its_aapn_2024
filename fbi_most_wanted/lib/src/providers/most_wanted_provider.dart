@@ -22,7 +22,7 @@ FutureOr<List<MostWantedModel>> mostWanted(MostWantedRef ref, int page) async {
 
     if (description.isEmpty) return null;
 
-    final imageUrl = value.images.firstOrNull?.thumb;
+    final imageUrl = value.images.firstOrNull?.original;
     if (imageUrl == null) return null;
 
     return MostWantedModel(

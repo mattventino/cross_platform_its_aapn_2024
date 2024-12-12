@@ -8,7 +8,6 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wanted = ref.watch(mostWantedProvider(1));
-    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -23,19 +22,23 @@ class HomePage extends ConsumerWidget {
         child: switch (wanted) {
           AsyncData(:final value) => GridView.count(
               crossAxisCount: 4,
-              childAspectRatio: 3 / 4,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
               children: [
                 for (final wanted in value)
                   Card(
                     margin: const EdgeInsets.all(4),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(wanted.title),
-                        Image.network(wanted.imageUrl),
-                        Text(
-                          wanted.description,
-                          style: theme.textTheme.labelSmall,
-                        )
+                        const SizedBox(height: 20),
+                        AspectRatio(
+                          aspectRatio: 4 / 3,
+                          child: Image.network(
+                            wanted.imageUrl,
+                          ),
+                        ),
                       ],
                     ),
                   ),
