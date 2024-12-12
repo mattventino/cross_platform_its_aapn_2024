@@ -19,6 +19,7 @@ class QuoteWidget extends StatelessWidget {
           quote,
           style: theme.textTheme.bodySmall,
         ),
+        const SizedBox(height: 20),
         Align(
           alignment: Alignment.bottomRight,
           child: Text(
