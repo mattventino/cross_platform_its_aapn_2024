@@ -1,8 +1,10 @@
 import 'package:breaking_bad/src/pages/review_page.dart';
 import 'package:breaking_bad/src/providers/quote_provider.dart';
+import 'package:breaking_bad/src/providers/reviews_notifier.dart';
 import 'package:breaking_bad/src/widgets/quote_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -10,6 +12,11 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quote = ref.watch(quoteProvider);
+    final reviewsAmount = ref.watch(
+      reviewsNotifierProvider.select(
+        (value) => value.length,
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -26,6 +33,16 @@ class HomePage extends ConsumerWidget {
                   icon: const Icon(Icons.refresh),
                 )
             },
+          ),
+          Badge.count(
+            count: reviewsAmount,
+            isLabelVisible: reviewsAmount > 0,
+            child: IconButton(
+              onPressed: () {
+                context.pushNamed('reviews');
+              },
+              icon: const Icon(Icons.list),
+            ),
           ),
           const SizedBox(width: 20)
         ],

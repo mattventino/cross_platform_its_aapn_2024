@@ -1,5 +1,6 @@
 import 'package:breaking_bad/core/logger.dart';
 import 'package:breaking_bad/src/pages/home_page.dart';
+import 'package:breaking_bad/src/pages/reviews_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -13,5 +14,10 @@ final router = GoRouter(
       name: 'home',
       builder: (context, state) => const HomePage(),
     ),
+    GoRoute(
+      path: '/reviews',
+      name: 'reviews',
+      builder: (context, state) => const ReviewsPage(),
+    )
   ],
 );
