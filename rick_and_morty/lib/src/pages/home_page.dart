@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rick_and_morty/src/providers/human_only_provider.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rick_and_morty/src/providers/query_provider.dart';
 import 'package:rick_and_morty/src/providers/search_provider.dart';
 
@@ -23,17 +23,16 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     final results = ref.watch(searchProvider);
-    final humanOnly = ref.watch(humanOnlyProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text("Rick and morty!"),
         actions: [
-          Switch(
-            value: humanOnly,
-            onChanged: (value) {
-              ref.read(humanOnlyProvider.notifier).update(value);
+          IconButton(
+            onPressed: () {
+              context.pushNamed('filters');
             },
+            icon: Icon(Icons.filter_list),
           )
         ],
       ),
