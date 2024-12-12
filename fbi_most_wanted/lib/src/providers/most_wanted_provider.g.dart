@@ -6,7 +6,7 @@ part of 'most_wanted_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mostWantedHash() => r'6c4f10714c5f3b17c45c703e5949fc371689c506';
+String _$mostWantedHash() => r'ee04303e2bd83517be9429cdd79b77b35ff39488';
 
 /// See also [mostWanted].
 @ProviderFor(mostWanted)

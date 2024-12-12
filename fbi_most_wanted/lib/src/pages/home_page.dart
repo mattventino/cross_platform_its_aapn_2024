@@ -34,8 +34,8 @@ class HomePage extends ConsumerWidget {
         ),
         child: switch (wanted) {
           AsyncData(:final value) => RefreshIndicator(
-              onRefresh: () async {
-                ref.invalidate(mostWantedProvider);
+              onRefresh: () {
+                return ref.refresh(mostWantedProvider.future);
               },
               child: GridView.count(
                 crossAxisCount: 4,

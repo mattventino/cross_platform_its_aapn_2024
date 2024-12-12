@@ -8,7 +8,7 @@ part 'most_wanted_provider.g.dart';
 @riverpod
 FutureOr<List<MostWantedModel>> mostWanted(MostWantedRef ref) async {
   final api = ref.watch(mostWantedApiProvider);
-  final page = Random().nextInt(10) + 1;
+  final page = Random().nextInt(40) + 1;
   final result = await api.getList(page: page);
   final models = result.map((value) {
     var description = '';
